@@ -1,27 +1,34 @@
+// 전역 변수 선언
+$lightgray: rgb(241, 241, 241);
+$baige: rgb(235, 235, 194);
+$reset0: 0;
+$tinySize: 10px;
+
 html,
 body {
-    margin: 0;
-    padding: 0;
-    background-color: azure;
+    $backgroundColor: #f0ffff; // 지역 변수로 선언
+    margin: $reset0;
+    padding: $reset0;
+    background-color: $backgroundColor;
     box-sizing: border-box;
 }
 
 p {
-    margin: 0;
-    padding: 0;
+    margin: $reset0;
+    padding: $reset0;
 }
 
 .wrapper {
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: lightgray;
+    background-color: $lightgray;
 
     .header {
-        background-color: beige;
+        background-color: $baige;
         position: fixed;
         width: 100%;
-        padding: 10px;
+        padding: $tinySize;
         display: flex;
         box-sizing: border-box;
         justify-content: space-between;
@@ -29,7 +36,7 @@ p {
     }
 
     .container {
-        padding: 10px;
+        padding: $tinySize;
         padding-top: 60px;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -37,8 +44,8 @@ p {
         .box {
             background-color: black;
             color: white;
-            padding: 10px;
-            margin: 5px;
+            padding: $tinySize;
+            margin: $tinySize/2;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -48,8 +55,8 @@ p {
 
     // header와 container안에 공통으로 들어가 있어 따로 분기
     .icon {
-        width: 30px;
-        height: 30px;
+        width: $tinySize * 3;
+        height: $tinySize * 3;
         display: flex;
         justify-content: center;
         align-items: center;
