@@ -4,6 +4,26 @@ $baige: rgb(235, 235, 194);
 $reset0: 0;
 $tinySize: 10px;
 
+// @mixin 사용
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// @mixin 안에 반복되는 값을 넣을 수 있음
+@mixin flexBetweenCenter {
+    @include flexCenter;
+    justify-content: space-between;
+}
+
+// @mixin안에 변수를 넣을 수 있음, 기본값도 설정 가능
+@mixin flexChoose($justifyContent:center) {
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: center;
+}
+
 html,
 body {
     $backgroundColor: #f0ffff; // 지역 변수로 선언
@@ -29,10 +49,9 @@ p {
         position: fixed;
         width: 100%;
         padding: $tinySize;
-        display: flex;
         box-sizing: border-box;
-        justify-content: space-between;
-        align-items: center;
+        // @include flexChoose(); // 이 경우, 기본 값인 center가 들어감
+        @include flexChoose(space-between);
     }
 
     .container {
@@ -46,9 +65,7 @@ p {
             color: white;
             padding: $tinySize;
             margin: $tinySize/2;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            @include flexBetweenCenter;
             min-height: 150px;
         }
     }
