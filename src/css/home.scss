@@ -1,3 +1,6 @@
+// 클래스 명 변수로 사용해보기
+$box : box;
+
 // 전역 변수 선언
 $lightgray: rgb(241, 241, 241);
 $baige: rgb(235, 235, 194);
@@ -22,7 +25,8 @@ $tinySize: 10px;
     display: flex;
     justify-content: $justifyContent;
     align-items: center;
-    @content;
+
+    @content; // 컨텐츠 블럭 적용
 }
 
 html,
@@ -53,7 +57,7 @@ p {
         box-sizing: border-box;
         // @include flexChoose(); // 이 경우, 기본 값인 center가 들어감
         @include flexChoose(space-between){
-            background-color: white;
+            background-color: white; // 컨텐츠 블록이 있을 때, 이런 문법으로 추가 css 적용 가능
         };
     }
 
@@ -63,7 +67,7 @@ p {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
 
-        .box {
+        .#{$box} { // interpolation(보간법)으로 변수명 적용해보기
             background-color: black;
             color: white;
             padding: $tinySize;
