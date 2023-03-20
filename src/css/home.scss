@@ -1,3 +1,12 @@
+// placeholder 선택자 사용해보기
+%text_color { // 공통되는 속성을 동일하게 적용하기 위해 style을 묶음
+    padding: 5px;
+    color: red;
+    &:hover {
+        color: blue;
+    }
+}
+
 // @for 문 사용해보기
 // @for $i from 1 to 4 { // from-to 는 to 뒤에 나오는 숫자 미만의 반복되는 값을 사용함(해당 숫자 비포함)
 //     .text_#{$i} {
@@ -6,6 +15,7 @@
 // }
 @for $i from 1 through 3 { // from-through 는 to 뒤에 나오는 숫자 이하로 반복되는 값을 사용함(해당 숫자 포함)
     .text_#{$i} {
+        @extend %text_color; // 이렇게 하면 선택자 간 연관성이 생김
         font-size: ($i * 10px)
     }
 }
