@@ -22,6 +22,7 @@ $tinySize: 10px;
     display: flex;
     justify-content: $justifyContent;
     align-items: center;
+    @content;
 }
 
 html,
@@ -51,7 +52,9 @@ p {
         padding: $tinySize;
         box-sizing: border-box;
         // @include flexChoose(); // 이 경우, 기본 값인 center가 들어감
-        @include flexChoose(space-between);
+        @include flexChoose(space-between){
+            background-color: white;
+        };
     }
 
     .container {
@@ -68,14 +71,27 @@ p {
             @include flexBetweenCenter;
             min-height: 150px;
         }
+        
+        @at-root {
+            // header와 container안에 공통으로 들어가 있지만 분기 처리를 따로 함. !global을 써도 됨
+            .icon {
+                width: $tinySize * 3;
+                height: $tinySize * 3;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 400px) {
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
     }
 
-    // header와 container안에 공통으로 들어가 있어 따로 분기
-    .icon {
-        width: $tinySize * 3;
-        height: $tinySize * 3;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    @at-root {
+
     }
 }
