@@ -1,3 +1,6 @@
+// unique-id() 사용해보기
+$key : unique-id();
+
 // placeholder 선택자 사용해보기
 %text_color { // 공통되는 속성을 동일하게 적용하기 위해 style을 묶음
     padding: 5px;
@@ -15,7 +18,7 @@
 // }
 @for $i from 1 through 3 { // from-through 는 to 뒤에 나오는 숫자 이하로 반복되는 값을 사용함(해당 숫자 포함)
     .text_#{$i} {
-        @extend %text_color; // 이렇게 하면 선택자 간 연관성이 생김
+        @extend %text_color; // 이렇게 하면 선택자 간 연관성이 생김, mixin의 @include는 독립적으로 css가 생겨남
         font-size: ($i * 10px)
     }
 }
@@ -96,6 +99,18 @@ p {
             margin: $tinySize/2;
             @include flexBetweenCenter;
             min-height: 150px;
+
+            animation-name: $key;
+            animation-duration: 0.5s;
+            animation-iteration-count: 1;
+
+            @keyframes #{$key} {
+                from {
+                    transform: scale(1.5);
+                } to {
+                    transform: scale(1);
+                }
+            }
         }
         
         @at-root {
